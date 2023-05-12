@@ -9,7 +9,8 @@ class Llamada {
         }
     getFechaEstadoActual(fecha){ 
         fechaEstado = fecha
-        return fechaEstado
+
+        return console.log(`La fecha del estado ${fechaEstado}`)
     }
     actualizarEnCurso(){
 
@@ -36,4 +37,7 @@ class Llamada {
 
     }
 }
+
+
+export default Llamada
 
