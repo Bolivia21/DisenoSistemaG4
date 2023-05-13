@@ -91,7 +91,7 @@ class OpcionValidacion{
     }
     esCorrecta(array, correcto){ 
         for(let i = 0; i < array.length ; i++){
-            if(array[i] === 'correcto' ){
+            if(array[i] === correcto ){
                 return true
             }
         }
