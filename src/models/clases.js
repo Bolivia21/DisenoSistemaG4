@@ -51,9 +51,10 @@ class Estado{
 }
 
 class subOpcionLlamada{
-    constructor(nombre, nroOrden){
+    constructor(nombre, nroOrden,validacionRequerida){
         this.nombre = nombre;
         this.nroOrden = nroOrden;
+        this.validacionRequerida = validacionRequerida
 
     }
     getValidaciones(){
@@ -66,9 +67,11 @@ class subOpcionLlamada{
 }
 
 class Validacion{
-    constructor(audioMensajeValidacion,nombre){
+    constructor(audioMensajeValidacion,nombre,opcionesValidacion,tipo){
         this.audioMensajeValidacion = audioMensajeValidacion;
         this.nombre = nombre;
+        this.opcionesValidacion = opcionesValidacion;
+        this.tipo = tipo
     }
     getValidacion(){
 
@@ -86,10 +89,18 @@ class OpcionValidacion{
     getOpcionesValidaciones(){
 
     }
-    esCorrecta(){
-
+    esCorrecta(array, correcto){ 
+        for(let i = 0; i < array.length ; i++){
+            if(array[i] === 'correcto' ){
+                return true
+            }
+        }
+        return false
     }
 }
+const opcionArray = ['No', 'Si', 'Correcta', 'correcto']
+const opcioncorrec = new OpcionValidacion()
+console.log(opcioncorrec.esCorrecta(opcionArray,'Correcta'))
 
 class Cliente{
     constructor(dni, nombreCompleto, nroCelular){
