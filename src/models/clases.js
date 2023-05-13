@@ -91,7 +91,7 @@ class OpcionValidacion{
     }
 }
 
-class Cliente{ //cliente terminadoa
+class Cliente{ //cliente terminado
     constructor(dni, nombreCompleto, nroCelular, info){
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
