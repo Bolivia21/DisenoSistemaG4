@@ -131,14 +131,14 @@ class Cliente{ //cliente terminado
         }}
         return cliente
     }
-    getNombreCliente(cliente){
-        if (cliente !== undefined){
+    getNombreCliente(clientes, cliente){
+    for(let i = 0; i < clientes.length; i++){
+        if (clientes[i].nombreCompleto === cliente.nombreCompleto){
             return cliente.nombreCompleto
-        }else {
-            return 'El cliente no existe'
         }
-    }
-}
+   }
+   return 'El cliente No existe'
+}}
 
 class CambioEstado {
     constructor(fechaHoraInicio, fechaHoraFin, estado){
