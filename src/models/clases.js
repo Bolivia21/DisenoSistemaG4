@@ -116,31 +116,50 @@ const opcionArray = ['No', 'Si', 'Correcta', 'correcto']
 const opcioncorrec = new OpcionValidacion()
 console.log(opcioncorrec.esCorrecta(opcionArray,'Correcta'))
 
-class Cliente{
-    constructor(dni, nombreCompleto, nroCelular){
+class Cliente{ //cliente terminado
+    constructor(dni, nombreCompleto, nroCelular, info){
         this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.nroCelular = nroCelular;
+        this.info= info
     }
-    esTuDni(){
-
+    esTuDni(clientes, dniAComparar){
+        cliente = undefined
+        for (i = 0; i < clientes.length; i++){
+        if (clientes[i].dni === dniAComparar){
+            cliente = clientes[i]
+        }}
+        return cliente
     }
-    getNombreCliente(){
-
+    getNombreCliente(cliente){
+        if (cliente !== undefined){
+            return cliente.nombreCompleto
+        }else {
+            return 'El cliente no existe'
+        }
     }
 }
 
 class CambioEstado {
-    constructor(fechaHoraInicio, fechaHoraFin){
+    constructor(fechaHoraInicio, fechaHoraFin, estado){
         this.fechaHoraInicio = fechaHoraInicio;
-        this.fechaHoraFin = fechaHoraFin
+        this.fechaHoraFin = fechaHoraFin;
+        this.estado = estado
     }
-    esActual(){
+    esEstadoInicial(){
+
+    }
+    esUltimoEstado(){
+
+    }
+    getNombreEstado(){
 
     }
     getFechaHoraInicio(){
 
     }
+
+    
 }
 
 export default {
