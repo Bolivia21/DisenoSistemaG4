@@ -16,7 +16,7 @@ class Llamada {
 
         }
     getFechaActual(){ 
-            const fechaActual = new Date();
+            const fechaActual = Date.now();
             return fechaActual 
     
         }
@@ -50,9 +50,7 @@ class Llamada {
     setDescripcionOperador(){
 
     }
-    setDuracion(){
-
-    }
+    
 }
 
 class Estado{
@@ -123,7 +121,7 @@ class Cliente{
 }
 class CambioEstado {
     constructor(estado){
-        this.fechaHoraInicio = new Date();
+        this.fechaHoraInicio = Date.now();
         this.estado = estado
     }
     getFechaHoraInicio(){
