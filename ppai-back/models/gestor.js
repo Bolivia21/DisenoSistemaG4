@@ -1,46 +1,60 @@
+import { actualizarEstado, getDatosLlamada, setDescripcionOperador, setDuracion } from "./llamada.js";
+import { mostrarPantalla,
+    solicitarDescripcionOperador,
+    solicitarAccionRequerida,
+    solicitarConfirmacionOperador,
+    informarExitoRegistroAccion } from "./pantallarespuestaoperador.js";
+import { esEnCurso, esFinalizado, estados } from "./estado.js";
+
 export class GestorRespuestaOperador {
     RegistrarRespuestaOperador(){ // En teoria todos los metodos del gestor estan aca adentro en orden de ejecucion
-        PantallaRespuestaOperador.mostrarPantalla(); //le invoco el metodo a la Pantalla
+        pantalla.mostrarPantalla(); //le invoco el metodo a la Pantalla
         this.getFechaEstadoActual();
-        this.buscarEstadoEnCurso();
-        this.getFechaActual();
-        Llamada.actualizarEnCurso();
+        const estadoEnCurso = this.buscarEstadoEnCurso(estados);
+        let fecha = this.getFechaActual();
+        llamada.actualizarEstado(estadoEnCurso, fecha);
         this.buscarValidaciones();
         this.ordenarValidaciones();
         this.buscarClientePorDNI();
-        Llamada.getDatosLlamada();
+        llamada.getDatosLlamada();
         this.mostrarDatosLlamada();
         //aca tengo dudas de donde haria el loop de validaciones
-        PantallaRespuestaOperador.solicitarDescripcionOperador();
+        pantalla.solicitarDescripcionOperador();
         this.tomarDescripcionOperador();
-        Llamada.setDescripcionOperador();
-        PantallaRespuestaOperador.solicitarAccionRequerida();
+        llamada.setDescripcionOperador();
+        pantalla.solicitarAccionRequerida();
         this.tomarAccionRequerida();
-        PantallaRespuestaOperador.solicitarConfirmacionOperador();
+        pantalla.solicitarConfirmacionOperador();
         this.tomarConfirmacionOperacion();
         //aca tengo dudas de como llamaria al otro caso de uso;
-        PantallaRespuestaOperador.informarExitoRegistroAccion();
+        pantalla.informarExitoRegistroAccion();
         this.buscarEstadoFinalizado();
         this.calcularDuracionLlamada();
-        Llamada.setDuracion();
+        llamada.setDuracion();
         this.finCasoDeUso();
     }
 
     getFechaEstadoActual(){
-        Llamada.getFechaEstadoActual() // le invoco el metodo a llamada
+        llamada.getFechaEstadoActual() // le invoco el metodo a llamada
     }
 
-    buscarEstadoEnCurso() {
-        Estado.esEnCurso(); //invoco el metodo de Estado (Tengo duda de si el for por el asterisco va aca o en el metodo)
-    }
+    buscarEstadoEnCurso(estados) {
+        for (const estado of estados) {
+          if (estado.esEnCurso()) {
+            return estado;
+          }
+        }
+        return null;
+      }
 
     getFechaActual() {
         const fecha = newDate(); 
         return fecha; //retorno la fecha para ser comparada
     }
 
-    buscarValidaciones() {
-        Llamada.buscarValidaciones() // invoco el metodo de Llamada
+    buscarValidaciones(llamada) {
+        const validaciones = llamada.getValidaciones();
+
     }
 
     ordenarValidaciones() {

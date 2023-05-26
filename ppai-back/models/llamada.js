@@ -15,14 +15,9 @@ export class Llamada {
 
 
         }
-    getFechaActual(){ 
-            const fechaActual = Date.now();
-            return fechaActual 
-    
-        }
-    setEstadoActual(estado){
-            const actual = this.getFechaActual() 
-            const cambioEstado = new CambioEstado(actual,estado)
+
+    actualizarEstado(estado, fecha){
+            const cambioEstado = new CambioEstado(fecha,estado)
             this.cambioEstado.push(cambioEstado)
         }
     getEstadoActual(){
