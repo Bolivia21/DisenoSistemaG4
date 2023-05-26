@@ -2,24 +2,19 @@ export class Estado{
     constructor(nombre){
         this.nombre = nombre;
     }
-    esEnCurso(estados){
-        for(let i = 0; i < estados.length ; i++){
-            if(estados[i]=== "enCurso"){
-                return true
-            }
-        return false 
-        }
-    }
+    esEnCurso() {
+        return this.nombre === "EnCurso";
+      }
+
     esFinalizado(estados){
-        for(let i = 0; i < estados.length ; i++){
-            if(estados[i]=== "esFinalizada"){
-                return true
-            }
-        return false 
-        }
+        return this.nombre === "Finalizada"
     }
 }
-
-const estados = new Array("enCurso", "esCancelada", "esFinalizada", "esInicializada");
-const verificarEstado = new Estado("enCurso");
 console.log(verificarEstado.esEnCurso(estados))
+
+const enCurso = new Estado("EnCurso")
+const finalizada = new Estado("finalizada")
+const iniciada = new Estado("iniciada")
+
+let estados = [iniciada, enCurso, finalizada]
+export default estados
