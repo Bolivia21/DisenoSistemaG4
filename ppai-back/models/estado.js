@@ -1,4 +1,4 @@
-export class Estado{
+class Estado{
     constructor(nombre){
         this.nombre = nombre;
     }
@@ -10,11 +10,10 @@ export class Estado{
         return this.nombre === "Finalizada"
     }
 }
-console.log(verificarEstado.esEnCurso(estados))
 
 const enCurso = new Estado("EnCurso")
-const finalizada = new Estado("finalizada")
+const finalizada = new Estado("Finalizada")
 const iniciada = new Estado("iniciada")
 
-let estados = [iniciada, enCurso, finalizada]
+const estados = [iniciada, enCurso, finalizada]
 export default estados

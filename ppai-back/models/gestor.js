@@ -3,8 +3,7 @@ import { mostrarPantalla,
     solicitarDescripcionOperador,
     solicitarAccionRequerida,
     solicitarConfirmacionOperador,
-    informarExitoRegistroAccion } from "./pantallarespuestaoperador.js";
-import { esEnCurso, esFinalizado, estados } from "./estado.js";*/
+    informarExitoRegistroAccion } from "./pantallarespuestaoperador.js";*/
 
 export class GestorRespuestaOperador {
     constructor(llamadaActual, categoriaSeleccionada, opcionLlamadaSeleccionada,dniCliente,estadoEnCurso,
@@ -15,10 +14,9 @@ export class GestorRespuestaOperador {
             this.dniCliente = dniCliente;
             this.subOpcionSeleccionada = subOpcionSeleccionada;
             this.fechaHoraActual = null;
-            this.estadoLlamada = estadoLlamada;
+            this.estadoLlamada = null;
             this.validaciones = validaciones
-            this.estadoEnCurso = null;
-            this.estadoFinalizado = null
+
     }
 
     RegistrarRespuestaOperador(){ // En teoria todos los metodos del gestor estan aca adentro en orden de ejecucion
@@ -57,7 +55,7 @@ export class GestorRespuestaOperador {
         //asigna al atributo estadoEnCurso el nombre. sino lo encuentra devuelve null
         for (const estado of estados) {
           if (estado.esEnCurso()) {
-            this.estadoEnCurso= estado.nombre
+            this.estadoLlamada= estado.nombre
             return estado;
           }
         }
@@ -112,7 +110,7 @@ export class GestorRespuestaOperador {
         //lo mismo que esEnCurso
         for (const estado of estados) {
             if (estado.esFinalizado()) {
-                this.estadoFinalizado = estado.nombre
+                this.estadoLlamada = estado.nombre
                 return estado;
             }
           }
