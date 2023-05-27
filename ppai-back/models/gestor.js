@@ -25,10 +25,10 @@ export class GestorRespuestaOperador {
         const estadoEnCurso = this.buscarEstadoEnCurso(estados);
         let fecha = this.getFechaActual();
         llamada.actualizarEstado(estadoEnCurso, fecha);
-        this.buscarValidaciones();
-        this.ordenarValidaciones();
-        this.buscarClientePorDNI();
-        llamada.getDatosLlamada();
+        const validaciones = this.buscarValidaciones();
+        const validacionesOrdenadas = this.ordenarValidaciones(validaciones);
+        const nombreCliente = this.buscarClientePorDNI();
+        const datosLlamadaAMostrar = llamada.getDatosLlamada();
         this.mostrarDatosLlamada();
         //aca tengo dudas de donde haria el loop de validaciones
         pantalla.solicitarDescripcionOperador();
@@ -70,8 +70,7 @@ export class GestorRespuestaOperador {
     }
 
     buscarValidaciones(llamada) {
-        const validaciones = llamada.getValidaciones();
-
+        return llamada.getValidaciones();
     }
 
     ordenarValidaciones() {
@@ -79,15 +78,14 @@ export class GestorRespuestaOperador {
     }
 
     buscarClientePorDNI() {
-        Llamada.getClientePorDni()
+        return Llamada.getClientePorDni()
     }
 
     mostrarDatosLlamada() {
-        PantallaRespuestaOperador.mostrarDatosLlamada()
-        PantallaRespuestaOperador.mostrarNombreCliente()
-        PantallaRespuestaOperador.mostrarCategoriaSeleccionada()
-        PantallaRespuestaOperador.mostrarOpcionSeleccionada()
-        PantallaRespuestaOperador.mostrarSubOpcionSeleccionada()
+        PantallaRespuestaOperador.mostrarNombreCliente(nombreCliente);
+        PantallaRespuestaOperador.mostrarCategoriaSeleccionada(datos.categoriaSeleccionada);
+        PantallaRespuestaOperador.mostrarOpcionSeleccionada(datos.opcion);
+        PantallaRespuestaOperador.mostrarSubOpcionSeleccionada(datos.subOpcion);
     }
 
     verificarSeleccionOpcion() {
