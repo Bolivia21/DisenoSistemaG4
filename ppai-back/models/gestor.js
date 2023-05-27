@@ -1,10 +1,10 @@
-import { actualizarEstado, getDatosLlamada, setDescripcionOperador, setDuracion } from "./llamada.js";
+/*import { actualizarEstado, getDatosLlamada, setDescripcionOperador, setDuracion } from "./llamada.js";
 import { mostrarPantalla,
     solicitarDescripcionOperador,
     solicitarAccionRequerida,
     solicitarConfirmacionOperador,
     informarExitoRegistroAccion } from "./pantallarespuestaoperador.js";
-import { esEnCurso, esFinalizado, estados } from "./estado.js";
+import { esEnCurso, esFinalizado, estados } from "./estado.js";*/
 
 export class GestorRespuestaOperador {
     constructor(llamadaActual, categoriaSeleccionada, opcionLlamadaSeleccionada,dniCliente,estadoEnCurso,
@@ -66,7 +66,7 @@ export class GestorRespuestaOperador {
     
     //asigno fecha y hora al atributo
     getFechaActual() {
-        const fechaActual = newDate(); 
+        const fechaActual = new Date(); 
         this.fechaHoraActual = fechaActual
         return fechaActual; //retorno la fecha para ser comparada
     }
