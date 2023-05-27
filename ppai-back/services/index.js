@@ -1,4 +1,5 @@
 import clases from "../models/clases.js"
+import { GestorRespuestaOperador } from "../models/gestor.js"
 
 const actual = new clases.Llamada('operador','detalle','duacion','encuesta','observacion')
 const cliente = new clases.Cliente('44345121', 'Nicolas Oliva', '351567890', 'vive en alonso')
@@ -6,6 +7,9 @@ const cliente2 = new clases.Cliente('44345190', 'Benjamin Pavon', '351567123', '
 const arrC = [cliente2,cliente]
 const clientes = new clases.Cliente()
 const c = clientes.getNombreCliente(arrC,cliente2)
+const gestor = new GestorRespuestaOperador()
+
+
 
 const instancias = {
     actual,
