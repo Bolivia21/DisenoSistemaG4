@@ -5,19 +5,10 @@ export class Cliente{ //cliente terminado
         this.nroCelular = nroCelular;
         this.info= info
     }
-    esTuDni(clientes, dniAComparar){
-        cliente = undefined
-        for (i = 0; i < clientes.length; i++){
-        if (clientes[i].dni === dniAComparar){
-            cliente = clientes[i]
-        }}
-        return cliente
+    esTuDni(dniAComparar){
+        return this.dni === dniAComparar
     }
-    getNombreCliente(clientes, cliente){
-    for(let i = 0; i < clientes.length; i++){
-        if (clientes[i].nombreCompleto === cliente.nombreCompleto){
-            return cliente.nombreCompleto
-        }
-   }
-   return 'El cliente No existe'
-}}
+    getNombre(){
+        return this.nombreCompleto
+    }
+}

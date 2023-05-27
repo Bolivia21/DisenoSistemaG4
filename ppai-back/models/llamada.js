@@ -1,18 +1,20 @@
+import { getValidaciones } from "./subopcionllamada.js"
+import BaseDatosClientes from "../datos/clientes.js"
 export class Llamada {
     constructor(descripcionOperador,detalleAccionRequerida,
-        duracion,encuestaEnviada,observacionAuditor,cliente,operador,subOpcion,opcion,auditor){
+        duracion,encuestaEnviada,observacionAuditor,cliente,operador,subOpcion,opcion,auditor,categoriaSeleccionada){
             this.descripcionOperador = descripcionOperador;
             this.detalleAccionRequerida = detalleAccionRequerida;
             this.duracion = duracion;
             this.encuestaEnviada = encuestaEnviada;
             this.observacionAuditor = observacionAuditor;
-            this.cliente= cliente
+            this.cliente= cliente //es solo el dni, con el metodO getClientePorDNI lo busca
             this.operador= operador
             this.subOpcion= subOpcion
             this.opcion= opcion 
             this.cambioEstado= []
             this.auditor = auditor
-
+            this.categoriaSeleccionada = categoriaSeleccionada
 
         }
 
@@ -31,13 +33,29 @@ export class Llamada {
             this.duracion = duracion;
         }
     getValidaciones(){
-
+        const subOpcionLlamada = this.subOpcion
+        return subOpcionLlamada.getValidaciones()
     }
     getClientePorDni(){
+        const dni = this.cliente
+        const clientes = this.obtenerClientes()
+        for (const cliente of clientes) {
+            if(cliente.esTuDNI(dni)) {
+                return cliente.getNombre()
+            }
+        }
 
     }
+    obtenerClientes() {
+        clientes = [BaseDatosClientes] //BaseDatosClientes deberia ser un archivo que contenga un array con todos los clientes
+        return clientes
+    }
     getDatosLlamada(){
-
+        return {
+            opcion: this.opcion,
+            subOpcion: this.subOpcion,
+            categoriaSeleccionada: this.categoriaSeleccionada
+        }
     }
     esCorrecta(){
 
