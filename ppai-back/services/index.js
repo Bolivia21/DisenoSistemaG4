@@ -1,5 +1,6 @@
 import { GestorRespuestaOperador } from "../models/gestor.js"
 import estados from "../models/estado.js"
+import { Llamada } from "../models/llamada.js"
 
 /*const actual = new clases.Llamada('operador','detalle','duacion','encuesta','observacion')
 const cliente = new clases.Cliente('44345121', 'Nicolas Oliva', '351567890', 'vive en alonso')
@@ -19,6 +20,10 @@ const estadoCurso1 = gestor.buscarEstadoFinalizado(estados)
 console.log(estadoCurso)
 console.log(estadoCurso1)
 console.log(gestor.estadoLlamada)
+
+const llamadaN = new Llamada()
+const cambio = llamadaN.actualizarEstado(estadoCurso, fechaActual, undefined)
+console.log(llamadaN.cambioEstado)
 
 
 

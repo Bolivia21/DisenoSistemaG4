@@ -1,5 +1,5 @@
-import { getValidaciones } from "./subopcionllamada.js"
-import BaseDatosClientes from "../datos/clientes.js"
+
+import { CambioEstado } from "./cambioestado.js";
 export class Llamada {
     constructor(descripcionOperador,detalleAccionRequerida,
         duracion,encuestaEnviada,observacionAuditor,cliente,operador,subOpcion,opcion,auditor,categoriaSeleccionada){
@@ -18,10 +18,13 @@ export class Llamada {
 
         }
 
-    actualizarEstado(estado, fecha){
-            const cambioEstado = new CambioEstado(fecha,estado)
-            this.cambioEstado.push(cambioEstado)
+    actualizarEstado(estado, fechaI,fechaF){
+            this.crearCambioEstado(estado,fechaI,fechaF)
         }
+    crearCambioEstado(estado,fechaI,FechaFin){
+        const cambioEstado = new CambioEstado(fechaI,estado,FechaFin)
+        this.cambioEstado.push(cambioEstado)
+    }
     getEstadoActual(){
             const actual= this.cambioEstado.pop()
             return actual
