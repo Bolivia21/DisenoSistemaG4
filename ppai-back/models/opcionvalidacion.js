@@ -14,4 +14,8 @@ export class OpcionValidacion{
         }
         return null
     }
+    setDescripcion(desc){
+        this.descripcion = desc
+    }
+    
 }

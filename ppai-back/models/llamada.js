@@ -60,7 +60,8 @@ export class Llamada {
     esCorrecta(){
 
     }
-    setDescripcionOperador(){
+    setDescripcionOperador(descrip){
+        
 
     }
     
